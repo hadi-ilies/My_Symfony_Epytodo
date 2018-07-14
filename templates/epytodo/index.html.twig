@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<section class="articles">
+{% for article in Article %}
+<article>
+    <h2> {{article.Title}} </h2>
+      <div class="metadata">{{article.createat | date ('d/m/y')}}</div>
+      <div class="content">
+       <iframe src="//rutube.ru/play/embed/8176745?sTitle=false&amp;sAuthor=false&amp;p=9FaZLGXy2BnPxmvdRYqo-Q" allowfullscreen="allowfullscreen" width="800" height="500" frameborder="0"></iframe>
+           {{article.content | raw}}
+           </div>
+           </article>
+           {% endfor %}
+           </section>           
+{% endblock %}

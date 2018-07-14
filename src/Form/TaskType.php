@@ -6,15 +6,15 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UsersRegisterType extends AbstractType
+class TaskType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('begin')
-            ->add('end')
-            ->add('status')
+        ->add('title')
+        ->add('begin')
+        ->add('end')
+        ->add('status')
         ;
     }
 

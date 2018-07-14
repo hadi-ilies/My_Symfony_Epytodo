@@ -22,17 +22,17 @@ class Task
     private $title;
 
     /**
-    * @ORM\Column(type="string", length=255)
+    * @ORM\Column(type="datetime")
     */
     private $begin;
 
     /**
-    * @ORM\Column(type="string", length=255)
+    * @ORM\Column(type="datetime")
     */
     private $end;
 
-    /**
-    * @ORM\Column(type="string", length=255)
+    /** 
+    * @ORM\Column(type="text")
     */
     private $status;
 

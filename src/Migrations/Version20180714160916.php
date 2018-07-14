@@ -8,7 +8,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20180713085724 extends AbstractMigration
+final class Version20180714160916 extends AbstractMigration
 {
     public function up(Schema $schema) : void
     {
@@ -16,7 +16,8 @@ final class Version20180713085724 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('CREATE TABLE user_has_task (id INT AUTO_INCREMENT NOT NULL, fk_user_id INT NOT NULL, fk_task_id INT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE task (id INT AUTO_INCREMENT NOT NULL, title VARCHAR(255) NOT NULL, begin VARCHAR(255) NOT NULL, end VARCHAR(255) NOT NULL, status VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE article (id INT AUTO_INCREMENT NOT NULL, title VARCHAR(255) NOT NULL, content LONGTEXT NOT NULL, image VARCHAR(255) NOT NULL, create_at DATETIME NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
+        $this->addSql('ALTER TABLE task CHANGE begin begin DATETIME NOT NULL, CHANGE end end DATETIME NOT NULL, CHANGE status status LONGTEXT NOT NULL');
     }
 
     public function down(Schema $schema) : void
@@ -25,6 +26,7 @@ final class Version20180713085724 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('DROP TABLE user_has_task');
-        $this->addSql('DROP TABLE task');
+        $this->addSql('DROP TABLE article');
+        $this->addSql('ALTER TABLE task CHANGE begin begin VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci, CHANGE end end VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci, CHANGE status status VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci');
     }
 }

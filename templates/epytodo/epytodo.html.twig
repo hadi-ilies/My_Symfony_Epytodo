@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block title %} register Symfony_Epytodo {% endblock %}
+
+{% block body %}
+
+<section>
+  {{ form_start(form) }}
+  {{ form_row(form.title, { 'attr' : { 'placeholder': "Task ..."}})}}
+  {{ form_row(form.status, { 'attr' : { 'placeholder': "Status ..."}})}}    
+  {{ form_row(form.begin) }}
+  {{ form_row(form.end) }}
+  <button type="submit" class="btn btn-success">Save</button>
+  {{ form_end(form) }}
+</section>
+{% endblock %}
