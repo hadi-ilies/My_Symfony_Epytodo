@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Tasks{% endblock %}
+
+{% block body %}
+{% for task in tasks %}
+<section>
+    <article>
+        <h2> {{task.status}} </h2>
+        <div class="metadata">Began : {{task.begin | date ('d/m/y')}}</div>
+        <div class="metadata">End : {{task.end | date ('d/m/y')}}</div>      
+    </article>
+           {% endfor %}
+</section>           
+
+{% endblock %}

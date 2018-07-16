@@ -36,29 +36,39 @@ class EpytodoController extends Controller
   * @Route("/register/epytodo", name="epytodo")
   */
 
-    public function epytodo(Request $Request, ObjectManager $manager)
-    {
+    public function epytodo(Request $request, ObjectManager $manager)
+    {        
         $task = new Task();
+        
         $form = $this->createFormBuilder($task)
-                ->add('title')
-                ->add('begin', DateType::class)    
-                ->add('end', DateType::class)
-                ->add('status', TextType::class)
-                ->getForm();
+            ->add('begin')
+            ->add('end')
+            ->add('status')
+            ->getForm();
 
-        $form->handleRequest($Request);
-
-        dump($task);
+        $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-                        $manager->persist($task);
-                        $manager->flush();
-                        return $this->redirectToRoute('home');
-                }
-
-
+                    $manager->persist($task);
+                    $manager->flush();
+                    return $this->redirectToRoute('tasks');
+                }                        
     return $this->render('epytodo/epytodo.html.twig', [
       'form' => $form->createView(),
     ]);
+    }
+
+    /**
+     * @Route("/register/epytodo/task", name="tasks")
+     */
+
+    public function all_task()
+    {
+        $repo = $this->getDoctrine()->getRepository(Task::class);
+        $tasks = $repo->findAll();
+
+        return ($this->render('all_task/display_all_task.html.twig', [
+            'tasks' => $tasks
+        ]));
     }
 
 }

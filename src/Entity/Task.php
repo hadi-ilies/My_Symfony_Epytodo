@@ -15,12 +15,7 @@ class Task
      * @ORM\Column(type="integer")
      */
     private $id;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $title;
-
+    
     /**
     * @ORM\Column(type="datetime")
     */
