@@ -36,7 +36,7 @@ class EpytodoController extends Controller
   * @Route("/register/epytodo", name="epytodo")
   */
 
-    public function epytodo(Request $request, ObjectManager $manager)
+    public function epytodo(Request $request, ObjectManager $manager, \Swift_Mailer $mailer)
     {        
         $task = new Task();
         
@@ -50,6 +50,15 @@ class EpytodoController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
                     $manager->persist($task);
                     $manager->flush();
+                    $mail = (new \Swift_Message('Your Task'))
+                            ->setFrom('darksiders218@gmail.com')
+                            ->setTo('hadi-ilies.bereksi-reguig@epitech.eu') //take email register
+                            ->setBody(
+                                $this->renderView('email/task_note.html.twig', array(
+                                     'task' => $task) 
+                                )
+                            );
+                    $mailer->send($mail);
                     return $this->redirectToRoute('tasks');
                 }                        
     return $this->render('epytodo/epytodo.html.twig', [
