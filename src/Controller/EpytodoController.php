@@ -17,7 +17,7 @@ use App\Entity\Article;
 class EpytodoController extends Controller
 {
     /**
-    * @Route("/home", name="home")
+    * @Route("/", name="home")
     */
 
     public function home()
