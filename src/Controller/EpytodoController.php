@@ -16,7 +16,6 @@ use App\Entity\Article;
 
 class EpytodoController extends Controller
 {
-
     /**
     * @Route("/home", name="home")
     */
@@ -31,7 +30,6 @@ class EpytodoController extends Controller
         ]);
     }
     
-
   /**
   * @Route("/register/epytodo", name="epytodo")
   */
@@ -79,5 +77,4 @@ class EpytodoController extends Controller
             'tasks' => $tasks
         ]));
     }
-
 }

@@ -7,6 +7,7 @@
   {{ form_start(form) }}
   {{ form_row(form.username, {'label': 'Username','attr': {'placeholder': 'Nom dutilisateur ...'}}) }}
   {{ form_row(form.password, {'label': 'password', 'attr': {'placeholder': 'password ...'}}) }}
+  {{ form_row(form.mail, {'label': 'e-mail', 'attr': {'placeholder': 'e-mail ...'}}) }}  
   <button type="submit" class="btn btn-success">Register</button>
   {{form_end(form)}}
 {% endblock %}

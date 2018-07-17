@@ -4,12 +4,16 @@
 
 {% block body %}
 
-<section>
-  {{ form_start(form) }}
-  {{ form_row(form.status, { 'attr' : { 'placeholder': "Title ..."}})}}    
-  {{ form_row(form.begin) }}
-  {{ form_row(form.end) }}
-  <button type="submit" class="btn btn-success">Save</button>
-  {{ form_end(form) }}
+{% if not app.user %}
+    <h2>you must be connected, if you want to use my Epytodo</h2>
+{% else %}
+  <section>
+    {{ form_start(form) }}
+    {{ form_row(form.status, { 'attr' : { 'placeholder': "Title ..."}})}}    
+    {{ form_row(form.begin) }}
+    {{ form_row(form.end) }}
+    <button type="submit" class="btn btn-success">Save</button>
+    {{ form_end(form) }}
 </section>
+{% endif %}
 {% endblock %}
